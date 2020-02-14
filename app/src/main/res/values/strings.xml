@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My HelloWorld</string>
+    <string-array name="programming_languages">
+        <item>"Java"</item>
+        <item>"C"</item>
+        <item>"Python"</item>
+        <item>"Ruby"</item>
+        <item>"Swift"</item>
+        <item>"C#"</item>
+    </string-array>
+    <string-array name="descriptions">
+        <item>"Java is good"</item>
+        <item>"C is bad"</item>
+        <item>"Python is good"</item>
+        <item>"Ruby is good"</item>
+        <item>"Swift is bad"</item>
+        <item>"C# is bad"</item>
+    </string-array>
+</resources>
