@@ -18,9 +18,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public ArrayList<String> vozila;
     public ArrayList<String> narucitelji;
     public ArrayList<String> lokacija;
+    private RecyclerViewClickListener listener;
 
-     MyAdapter(Context ct, ArrayList<String> narucitelji, ArrayList<String> vozila, ArrayList<String> lokacija) {
 
+    MyAdapter(Context ct, ArrayList<String> narucitelji, ArrayList<String> vozila, ArrayList<String> lokacija, RecyclerViewClickListener listener) {
+        this.listener = listener;
         this.ct = ct;
         this.narucitelji = narucitelji;
         this.vozila = vozila;
@@ -32,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
         View view = inflater.inflate(R.layout.my_row, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, listener);
     }
 
     @Override
@@ -48,13 +50,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return narucitelji.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView intervencija, informacije;
+        private RecyclerViewClickListener mListener;
 
-        public MyViewHolder(@NonNull View itemView) {
+
+        public MyViewHolder(@NonNull View itemView, RecyclerViewClickListener listener) {
             super(itemView);
+            mListener = listener;
+            itemView.setOnClickListener(this);
             intervencija = itemView.findViewById(R.id.intervencija);
             informacije = itemView.findViewById(R.id.informacije);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mListener.onClick(v, getAdapterPosition());
         }
     }
 }

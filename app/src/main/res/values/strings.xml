@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My HelloWorld</string>
+    <string name="app_name">AutoLoncar</string>
     <string-array name="programming_languages">
         <item>"Java"</item>
         <item>"C"</item>

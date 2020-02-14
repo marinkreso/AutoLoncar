@@ -5,10 +5,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,8 +24,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.rview);
+        RecyclerViewClickListener listener = new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(MainActivity.this, InterventionActivity.class);
+                intent.putExtra("vozilo", myAdapter.vozila.get(position));
+                intent.putExtra("lokacija", myAdapter.lokacija.get(position));
+                intent.putExtra("narucitelj", myAdapter.narucitelji.get(position));
+                startActivity(intent);
+            }
+        };
+
         myAdapter = new MyAdapter(this, GlobalArrays.narucitelji, GlobalArrays.vozila,
-                GlobalArrays.lokacija);
+                GlobalArrays.lokacija, listener);
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
 
         fab.setOnClickListener(new View.OnClickListener() {
