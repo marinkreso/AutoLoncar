@@ -12,11 +12,21 @@ public class InterventionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intervention);
-        TextView view = (TextView) findViewById(R.id.textView);
+        TextView tvVozilo = (TextView) findViewById(R.id.tv_vozilo);
+        TextView tvNapomena = (TextView) findViewById(R.id.tv_napomena);
+        TextView tvLokacija = (TextView) findViewById(R.id.tv_lokacija);
+        TextView tvNarucitelj = (TextView) findViewById(R.id.tv_narucitelj);
+
         Intent intent = getIntent();
+
         String vozilo = intent.getStringExtra("vozilo");
         String lokacija = intent.getStringExtra("lokacija");
         String narucitelj = intent.getStringExtra("narucitelj");
-        view.setText(vozilo + " " + narucitelj + " " + lokacija);
+        String napomena = intent.getStringExtra("napomena");
+
+        tvVozilo.setText("VOZILO: " + vozilo);
+        tvNapomena.setText(napomena);
+        tvLokacija.setText("LOKACIJA: " + lokacija);
+        tvNarucitelj.setText("NARUCITELJ: " + narucitelj);
     }
 }

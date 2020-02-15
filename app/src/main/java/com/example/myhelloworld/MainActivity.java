@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("vozilo", myAdapter.vozila.get(position));
                 intent.putExtra("lokacija", myAdapter.lokacija.get(position));
                 intent.putExtra("narucitelj", myAdapter.narucitelji.get(position));
+                intent.putExtra("napomena", GlobalArrays.napomena.get(position));
                 startActivity(intent);
             }
         };

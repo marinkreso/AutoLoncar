@@ -13,6 +13,7 @@ public class DetailsActivity extends AppCompatActivity {
     EditText lokacija_edit;
     EditText vozilo_edit;
     EditText narucitelj_edit;
+    EditText napomena_edit;
     int RESULT_CODE = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class DetailsActivity extends AppCompatActivity {
         lokacija_edit = (EditText) findViewById(R.id.lokacija);
         vozilo_edit = (EditText) findViewById(R.id.vozilo);
         narucitelj_edit = (EditText) findViewById(R.id.narucitelj);
+        napomena_edit = (EditText) findViewById(R.id.napomena);
         Button dodaj_intervenciju = (Button) findViewById(R.id.bt_submit_intervention);
         dodaj_intervenciju.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -39,6 +41,8 @@ public class DetailsActivity extends AppCompatActivity {
         String vozilo = vozilo_edit.getText().toString();
         String lokacija = lokacija_edit.getText().toString();
         String narucitelj = narucitelj_edit.getText().toString();
+        String napomena = napomena_edit.getText().toString();
+        if (RESULT_CODE == 1) GlobalArrays.napomena.add(napomena);
         Intent intent = new Intent();
         intent.putExtra("vozilo", vozilo);
         intent.putExtra("lokacija", lokacija);
